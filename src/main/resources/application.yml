@@ -1,0 +1,40 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+# mybatis配置
+mybatis:
+  # 扫描映射文件
+  mapper-locations: classpath:mapper/*.xml
+  # 配置别名扫描的包
+  type-aliases-package: com.qf.entity
+  configuration:
+    # 开启驼峰映射配置
+    use-actual-param-name: true
+    # 配置日志在控制台显示sql语句
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+#连接数据设置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/logistics?useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 1234
+    type: com.alibaba.druid.pool.DruidDataSource
+
+  # 用于阐述HTTP请求地址，请求非controller地址，如js,css,img等访问路径需要加上static
+  # 可以不配置也能访问图片
+  #  mvc:
+  #    static-path-pattern: /image/**/
+
+  resources:
+    #    我们都知道需要通过控制器跳转才能访问到templates下的html文件
+    #    因为springboot默认访问static,resources,public这些文件夹下的文件，而没有默认访问templates下的
+    #    所以需要加上classpath
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,classpath:/templates/
+      # 本地图片保存的路径，image会根据 x:\\和浏览器中输入的图片名字自动查找图片
+    #      file: ${oss.local.upload-file-path}
+    # 则用于描述静态资源的存放位置。多个路径（逗号隔开）依次查找是否存在
