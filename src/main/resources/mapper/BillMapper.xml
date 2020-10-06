@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.dao.BillDao">
+    <resultMap id="selectBill" type="BillInfo">
+        <id column="id" property="id"></id>
+        <result column="bill_type" property="billType"></result>
+        <result column="bill_code" property="billCode"></result>
+        <result column="bill_state" property="billState"></result>
+        <result column="write_date" property="writeDate"></result>
+        <result column="accept_station" property="acceptStation"></result>
+    </resultMap>
+    <select id="selectBill" resultMap="selectBill">
+        select * from billinfo
+    </select>
+
+</mapper>
