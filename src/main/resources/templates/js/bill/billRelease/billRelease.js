@@ -11,7 +11,7 @@ layui.use(['layer', 'form', 'element', 'jquery', 'table'], function() {
         table.render({
             elem: '#billTable',
             height: 'full-170',
-            url: nginx_url + '/bill/findNotRelease', //数据接口
+            url: nginx_url + '/bill/findNotRelease.do', //数据接口
             limit: 10,
             limits: [10],
             request: {
@@ -83,7 +83,7 @@ layui.use(['layer', 'form', 'element', 'jquery', 'table'], function() {
             move: false,
             end: function() {
                 table.reload('billTable', {
-                    url: nginx_url + '/bill/findNotRelease'
+                    url: nginx_url + '/bill/findNotRelease.do'
                 })
             }
         });

@@ -8,7 +8,7 @@ layui.use(['layer', 'form', 'element', 'jquery', 'table'], function() {
     table.render({
         elem: '#billTable',
         height: 'full-170',
-        url: nginx_url + '/bill/findNotRelease', //数据接口
+        url: nginx_url + '/bill/findNotRelease.do', //数据接口
         limit: 10,
         limits: [ 10 ],
         request: {
@@ -35,15 +35,21 @@ layui.use(['layer', 'form', 'element', 'jquery', 'table'], function() {
 
 });
 
-function createTime(v){
-    let dateTime;
-    let date = new Date();
-    date.setTime(v);
-    let y = date.getFullYear();
-    let m = date.getMonth() + 1;
-    m = m < 10 ? '0' + m : m;
-    let d = date.getDate();
-    d = d < 10 ? "0" + d : d;
-    dateTime = y + "-" + m + "-" + d;
-    return dateTime;
+//日期格式转换
+function createTime(date) {
+    var dateee = new Date(date).toJSON();
+    return new Date(+new Date(dateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '')
 }
+
+// function createTime(v){
+//     let dateTime;
+//     let date = new Date();
+//     date.setTime(v);
+//     let y = date.getFullYear();
+//     let m = date.getMonth() + 1;
+//     m = m < 10 ? '0' + m : m;
+//     let d = date.getDate();
+//     d = d < 10 ? "0" + d : d;
+//     dateTime = y + "-" + m + "-" + d;
+//     return dateTime;
+// }
