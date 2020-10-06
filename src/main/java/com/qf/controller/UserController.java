@@ -29,4 +29,10 @@ public class UserController {
         return new JsonResult(1,"登陆成功！");
 
     }
+
+    @RequestMapping("/logOut.do")
+    public JsonResult logOut(HttpSession session){
+        session.invalidate();
+        return new JsonResult(1,"注销登录成功");
+    }
 }

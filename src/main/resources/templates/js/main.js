@@ -69,7 +69,19 @@ layui.use(['layer', 'form', 'element', 'jquery'], function() {
     $("#username").append($.cookie("loginId"));
 });
 
-function logout() {
-    $.cookie("loginId", null);
-    window.location.href = "login.html";
-}
+
+$("#beButton").click(function () {
+    $.ajax({
+        type: "post",
+        url: "/user/logOut.do",
+        dataType:"json",
+        success: function (data) {
+            if (data.code == 1) {
+                alert(data.info)
+                window.location.href = "login.html"
+            } else {
+                alert("注销登录失败")
+            }
+        }
+    })
+})
