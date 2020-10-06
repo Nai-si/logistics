@@ -1,24 +1,31 @@
 package com.qf.util;
 
-import java.math.BigInteger;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 //MD5 生成器
 public class MD5Utils {
-	public static String md5(String password){
-		//生成一个md5加密器
+	public static String MD5(String key) {
+		char hexDigits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 		try {
-			MessageDigest md = MessageDigest.getInstance("MD5");
-			//计算MD5 的值
-			md.update(password.getBytes());
-			//BigInteger 将8位的字符串 转成16位的字符串 得到的字符串形式是哈希码值
-			//BigInteger(参数1,参数2) 参数1 是 1为正数 0为0 -1为负数
-			return new BigInteger(1, md.digest()).toString(16);
-		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			byte[] btInput = key.getBytes();
+			// 获得MD5摘要算法的 MessageDigest 对象
+			MessageDigest mdInst = MessageDigest.getInstance("MD5");
+			// 使用指定的字节更新摘要
+			mdInst.update(btInput);
+			// 获得密文
+			byte[] md = mdInst.digest();
+			// 把密文转换成十六进制的字符串形式
+			int j = md.length;
+			char str[] = new char[j * 2];
+			int k = 0;
+			for (int i = 0; i < j; i++) {
+				byte byte0 = md[i];
+				str[k++] = hexDigits[byte0 >>> 4 & 0xf];
+				str[k++] = hexDigits[byte0 & 0xf];
+			}
+			return new String(str);
+		} catch (Exception e) {
+			return null;
 		}
-		return null;
 	}
 }
