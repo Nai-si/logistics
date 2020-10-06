@@ -13,7 +13,7 @@ layui.use(['layer', 'form', 'element', 'jquery', 'table', 'laydate'], function()
 
     $.ajax({
         type: 'get',
-        url: nginx_url + '/driverInfo/selectAllId',
+        url: nginx_url + '/driverInfo/selectAllId.do',
         dataType: 'json',
         async: false,
         success: function (result) {
