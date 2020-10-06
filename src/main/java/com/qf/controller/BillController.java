@@ -22,6 +22,12 @@ public class BillController {
     @Autowired
     private BillService billService;
 
+    /**
+     * 票据信息查询
+     * @param pageNum
+     * @param limit
+     * @return
+     */
     @RequestMapping("/findByPage.do")
     public TableResult billInfo(Integer pageNum, Integer limit){
         List<BillInfo> list = billService.selectBill(pageNum, limit);
@@ -29,6 +35,12 @@ public class BillController {
         return new TableResult(200,"success",total,list);
     }
 
+    /**
+     * 查询未分发的票据
+     * @param pageNum
+     * @param limit
+     * @return
+     */
     @RequestMapping("/findNotRelease.do")
     public TableResult billRelease(Integer pageNum, Integer limit){
         List<BillInfo> list = billService.selectBill(pageNum, limit);
