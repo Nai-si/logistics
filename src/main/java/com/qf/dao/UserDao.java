@@ -13,6 +13,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserDao {
 
-    User login(@Param("loginId") String loginId, @Param("password") String password);
+    User login(@Param("loginId") String loginId);
 
 }

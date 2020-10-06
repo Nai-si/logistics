@@ -10,7 +10,7 @@ public class User {
 
     private String loginId;//登录账号
     private String password;//登录密码
-    private boolean ifOnline;//是否在线
+    private long ifOnline;//是否在线
 
     public String getLoginId() {
         return loginId;
@@ -28,18 +28,18 @@ public class User {
         this.password = password;
     }
 
-    public boolean isIfOnline() {
+    public long getIfOnline() {
         return ifOnline;
     }
 
-    public void setIfOnline(boolean ifOnline) {
+    public void setIfOnline(long ifOnline) {
         this.ifOnline = ifOnline;
     }
 
     public User() {
     }
 
-    public User(String loginId, String password, boolean ifOnline) {
+    public User(String loginId, String password, long ifOnline) {
         this.loginId = loginId;
         this.password = password;
         this.ifOnline = ifOnline;

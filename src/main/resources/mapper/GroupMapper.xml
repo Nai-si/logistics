@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace 命名空间 是唯一的，必须是Dao接口的全限定名-->
+<mapper namespace="com.qf.dao.GroupDao">
+    <resultMap id="FunctionWithGroup" type="FunctionWithGroup">
+        <id column="id" property="id"></id>
+        <result column="function_id" property="functionId"></result>
+        <result column="group_id" property="groupId"></result>
+    </resultMap>
+
+    <!--List<FunctionWithGroup> selectFunc(String id);-->
+    <select id="selectFunc" resultMap="FunctionWithGroup" parameterType="String">
+        select fun.* from functionwithgroup fun
+        join userwithgroup ug on ug.group_id = fun.group_id
+        JOIN user u on u.login_id = ug.user_id
+        where u.login_id = #{loginId}
+    </select>
+
+</mapper>

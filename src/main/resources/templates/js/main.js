@@ -1,13 +1,16 @@
 let login = $.cookie("loginId");
 let funArray = [];
+// console.log("cookie是："+ $.cookie("loginId"));
+// console.log("取到的cookie是："+ login);
+
 $.ajax({
     type: 'get',
-    url: nginx_url + '/selectFunc/' + login,
+    url: nginx_url + '/group/selectFunc.do?loginId=' + login,
     async: false,
     dataType: 'json',
     success: function (result) {
         funArray = [];
-        $.each(result, function (i, item) {
+        $.each(result.data, function (i, item) {
             funArray.push(item.functionId);
         })
     }
@@ -21,8 +24,8 @@ for (let i = 1; i <= 11; i++) {
 
 layui.use(['layer', 'form', 'element', 'jquery'], function() {
     let element = layui.element,
-    $ = layui.jquery,
-    layer = layui.layer;
+        $ = layui.jquery,
+        layer = layui.layer;
     let mainLayout = $('#main-layout');
     let former_id = -1;
     element.on('nav(demo)', function(elem) {
@@ -69,19 +72,7 @@ layui.use(['layer', 'form', 'element', 'jquery'], function() {
     $("#username").append($.cookie("loginId"));
 });
 
-
-$("#beButton").click(function () {
-    $.ajax({
-        type: "post",
-        url: "/user/logOut.do",
-        dataType:"json",
-        success: function (data) {
-            if (data.code == 1) {
-                alert(data.info)
-                window.location.href = "login.html"
-            } else {
-                alert("注销登录失败")
-            }
-        }
-    })
-})
+function logout() {
+    $.cookie("loginId", null);
+    window.location.href = "login.html";
+}

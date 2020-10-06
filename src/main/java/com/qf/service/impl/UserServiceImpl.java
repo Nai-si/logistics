@@ -16,11 +16,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
-
     private UserDao userDao;
+
     @Override
     public User login(String loginId, String password) {
-        User user = userDao.login(loginId, password);
+        User user = userDao.login(loginId);
         if (user == null) {
             throw new RuntimeException("账号错误");
         }
