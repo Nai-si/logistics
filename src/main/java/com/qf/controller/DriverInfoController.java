@@ -32,17 +32,15 @@ public class DriverInfoController {
         return new JsonResult(1,list);
     }
 
-//    /**
-//     * 司机列表分页查询
-//     * @param pageNum
-//     * @param limit
-//     * @return
-//     */
-//    @RequestMapping("/selectAllByPage.do")
-//    public TableResult selectAllByPage(Integer pageNum,Integer limit){
-//        List<DriverInfo> list = driverInfoService.findAll(pageNum, limit);
-//        long total = ((Page) list).getTotal();
-//        return new TableResult(200,"success",total,list);
-//    }
+    /**
+     * 添加司机
+     * @param driverInfo
+     * @return
+     */
+    @RequestMapping("/add.do")
+    public JsonResult addDriver(DriverInfo driverInfo){
+        driverInfoService.addDriver(driverInfo);
+        return new JsonResult(1,"添加成功");
+    }
 
 }

@@ -20,4 +20,6 @@ public interface DriverInfoDao {
 
     List<DriverInfo> selectAllId(String state);
 
+    void addDriver(DriverInfo driverInfo);
+
 }

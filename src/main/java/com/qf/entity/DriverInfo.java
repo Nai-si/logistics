@@ -15,7 +15,6 @@ public class DriverInfo {
     private String address;
     private double allowCarryVolume;
     private double allowCarryWeight;
-
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
     private String bizLicence;

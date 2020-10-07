@@ -24,12 +24,12 @@ layui.use(['layer', 'form', 'element', 'laydate', 'jquery', 'table'], function()
     form.on('submit(addDriver)', function () {
         $.ajax({
             type: 'post',
-            url: nginx_url + '/driverInfo/add',
+            url: nginx_url + '/driverInfo/add.do',
             data: $("#driverForm").serialize(),
             dataType: 'json',
             success: function (result) {
                 console.log(result);
-                if (result === 'SUCCESS') {
+                if (result.code == 1) {
                     layer.msg('司机信息添加成功', {
                         time: 800,
                         icon: 1
@@ -51,7 +51,7 @@ layui.use(['layer', 'form', 'element', 'laydate', 'jquery', 'table'], function()
             table.render({
                 elem: '#driverTable',
                 height: 'full-170',
-                url: nginx_url + '/driverInfo/selectAllByPage.do', //数据接口
+                url: nginx_url + '/driverInfo/selectAllByPage', //数据接口
                 limit: 10,
                 limits: [ 10 ],
                 request: {
@@ -60,7 +60,7 @@ layui.use(['layer', 'form', 'element', 'laydate', 'jquery', 'table'], function()
                 },
                 response: {
                     statusName: 'code', //数据状态的字段名称，默认：code
-                    statusCode: 200, //成功的状态码，默认：0
+                    // statusCode: 200, //成功的状态码，默认：0
                     msgName: 'msg', //状态信息的字段名称，默认：msg
                     countName: 'count', //数据总数的字段名称，默认：count
                     dataName: 'data' //数据列表的字段名称，默认：data
@@ -91,12 +91,12 @@ layui.use(['layer', 'form', 'element', 'laydate', 'jquery', 'table'], function()
                         //向服务端发送删除指令
                         $.ajax({
                             type: "DELETE",
-                            url: nginx_url + "/driverInfo/delete/" + data.id,
+                            url: nginx_url + "/driverInfo/delete/?id=" + data.id,
                             async: false,
                             dataType: 'json',
                             success: function (result) {
-                                console.log(result);
-                                if (result === 'SUCCESS') {
+                                if (result.code == 1) {
+                                    alert(result.info)
                                     layer.msg('删除成功', {
                                         time: 800,
                                         icon: 1
@@ -110,7 +110,7 @@ layui.use(['layer', 'form', 'element', 'laydate', 'jquery', 'table'], function()
                             }
                         });
                         table.reload('driverTable', {
-                            url: nginx_url + '/driverInfo/selectAllByPage.do'
+                            url: nginx_url + '/driverInfo/selectAllByPage'
                         });
                     });
 
@@ -119,12 +119,12 @@ layui.use(['layer', 'form', 'element', 'laydate', 'jquery', 'table'], function()
                         type: 2,
                         title: '司机 - ' + data.id + '信息修改',
                         content: ['driverModify.html?id=' + data.id, 'no'],
-                        area: ['95%', '95%'],
+                        area: ['100%', '100%'],
                         shadeClose: true,
                         move: false,
                         end: function() {
                             table.reload('driverTable', {
-                                url: nginx_url + '/driverInfo/selectAllByPage.do'
+                                url: nginx_url + '/driverInfo/selectAllByPage'
                             })
                         }
                     });

@@ -9,4 +9,17 @@
     <update id="updateDriverInfo" parameterType="com.qf.entity.DriverInfo">
         update driverinfo set state = #{state} where id = #{id}
     </update>
+    <select id="findDriverById" parameterType="string" resultType="string">
+        select id from driverinfo where id = #{id}
+    </select>
+    <insert id="addDriver" parameterType="DriverInfo">
+        insert into driverinfo(
+            id, address, allow_carry_volume,allow_carry_weight, birthday, biz_licence,
+            car_dept, car_dept_tel ,car_frame_no,
+            car_length, car_no, car_type, car_width,
+            company_car, drive_licence,driver_name,
+            engine_no,gender, goods_height,id_card,
+            insurance_card,phone, remark, run_licence, state
+        ) values(#{id}, #{address}, #{allowCarryVolume},#{allowCarryWeight},#{birthday}, #{bizLicence},#{carDept}, #{carDeptTel}, #{carFrameNo},#{carLength}, #{carNo}, #{carType}, #{carWidth},#{companyCar}, #{driveLicence},#{driverName},#{engineNo},#{gender},#{goodsHeight},#{idCard},#{insuranceCard},#{phone},#{remark},#{runLicence},#{state})
+    </insert>
 </mapper>

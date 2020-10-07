@@ -17,4 +17,6 @@ public interface DriverInfoService {
 //    List<DriverInfo> findAll(Integer pageNum,Integer limit);
 
     List<DriverInfo> selectAllId();
+
+    void addDriver(DriverInfo driverInfo);
 }

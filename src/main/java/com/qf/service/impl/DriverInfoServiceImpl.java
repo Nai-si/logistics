@@ -41,4 +41,10 @@ public class DriverInfoServiceImpl implements DriverInfoService {
         return driverInfoDao.selectAllId(StrUtils.DRIVER_STATE);
     }
 
+    @Override
+    public void addDriver(DriverInfo driverInfo) {
+        driverInfo.setId(getDriverId());
+        driverInfoDao.addDriver(driverInfo);
+    }
+
 }
