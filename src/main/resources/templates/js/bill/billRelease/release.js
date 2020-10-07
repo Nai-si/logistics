@@ -18,9 +18,9 @@ layui.use(['layer', 'form', 'element', 'jquery', 'table', 'laydate'], function()
         async: false,
         success: function (result) {
             console.log(result);
-            $.each(result, function (i, item) {
-                let option = '<option value="' + item + '">';
-                option += item;
+            $.each(result.info, function (i, item) {
+                let option = '<option value="' + item.id + '">';
+                option += item.id;
                 option += '</option>';
                 $("#receiveBillPerson").append(option);
             });
@@ -41,7 +41,7 @@ layui.use(['layer', 'form', 'element', 'jquery', 'table', 'laydate'], function()
 
         $.ajax({
             type: 'post',
-            url: nginx_url + '/bill/addRelease/' + bill_code,
+            url: nginx_url + '/bill/addRelease.do?billCode=' + bill_code,
             data: $("#releaseForm").serialize(),
             dataType: 'json',
             async: false,

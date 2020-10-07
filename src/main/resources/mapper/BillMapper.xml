@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qf.dao.BillDao">
-    <resultMap id="selectBill" type="BillInfo">
+    <resultMap id="billinfo" type="BillInfo">
         <id column="id" property="id"></id>
         <result column="bill_type" property="billType"></result>
         <result column="bill_code" property="billCode"></result>
@@ -10,8 +10,16 @@
         <result column="write_date" property="writeDate"></result>
         <result column="accept_station" property="acceptStation"></result>
     </resultMap>
-    <select id="selectBill" resultMap="selectBill">
+    <select id="findByPage" resultMap="billinfo">
         select * from billinfo
     </select>
-
+    <select id="findAllBill" resultMap="billinfo" parameterType="string">
+        select * from billinfo where bill_state = #{billState}
+    </select>
+    <insert id="addRelease" parameterType="com.qf.entity.BillRelease">
+        insert into billrelease (release_person,receive_bill_person,receive_bill_time,accept_station) values (#{releasePerson},#{receiveBillPerson},#{receiveBillTime},#{acceptStation})
+    </insert>
+    <update id="updateBillInfo" parameterType="com.qf.entity.BillInfo">
+        update billinfo set bill_state = #{billState} where bill_code = #{billCode}
+    </update>
 </mapper>

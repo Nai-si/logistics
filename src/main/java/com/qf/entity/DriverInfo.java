@@ -1,5 +1,7 @@
 package com.qf.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -10,30 +12,33 @@ import java.util.Date;
  */
 public class DriverInfo {
     private String id;
-    private String driverName;
-    private String idCard;
-    private String phone;
-    private String gender;
-    private Date birthday;
-    private String state;
-    private String carNo;
     private String address;
-    private String companyCar;
     private double allowCarryVolume;
     private double allowCarryWeight;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date birthday;
     private String bizLicence;
     private String carDept;
     private String carDeptTel;
     private String carFrameNo;
     private String carLength;
+    private String carNo;
     private String carType;
     private String carWidth;
+    private boolean companyCar;
     private String driveLicence;
+    private String driverName;
     private String engineNo;
+    private String gender;
     private String goodsHeight;
+    private String idCard;
     private String insuranceCard;
+    private String phone;
     private String remark;
     private String runLicence;
+    private String state;
+
 
     public String getId() {
         return id;
@@ -43,61 +48,6 @@ public class DriverInfo {
         this.id = id;
     }
 
-    public String getDriverName() {
-        return driverName;
-    }
-
-    public void setDriverName(String driverName) {
-        this.driverName = driverName;
-    }
-
-    public String getIdCard() {
-        return idCard;
-    }
-
-    public void setIdCard(String idCard) {
-        this.idCard = idCard;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getCarNo() {
-        return carNo;
-    }
-
-    public void setCarNo(String carNo) {
-        this.carNo = carNo;
-    }
 
     public String getAddress() {
         return address;
@@ -107,13 +57,6 @@ public class DriverInfo {
         this.address = address;
     }
 
-    public String getCompanyCar() {
-        return companyCar;
-    }
-
-    public void setCompanyCar(String companyCar) {
-        this.companyCar = companyCar;
-    }
 
     public double getAllowCarryVolume() {
         return allowCarryVolume;
@@ -123,6 +66,7 @@ public class DriverInfo {
         this.allowCarryVolume = allowCarryVolume;
     }
 
+
     public double getAllowCarryWeight() {
         return allowCarryWeight;
     }
@@ -130,6 +74,20 @@ public class DriverInfo {
     public void setAllowCarryWeight(double allowCarryWeight) {
         this.allowCarryWeight = allowCarryWeight;
     }
+
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public void setBirthday(java.sql.Date birthday) {
+        this.birthday = birthday;
+    }
+
 
     public String getBizLicence() {
         return bizLicence;
@@ -139,6 +97,7 @@ public class DriverInfo {
         this.bizLicence = bizLicence;
     }
 
+
     public String getCarDept() {
         return carDept;
     }
@@ -146,6 +105,7 @@ public class DriverInfo {
     public void setCarDept(String carDept) {
         this.carDept = carDept;
     }
+
 
     public String getCarDeptTel() {
         return carDeptTel;
@@ -155,6 +115,7 @@ public class DriverInfo {
         this.carDeptTel = carDeptTel;
     }
 
+
     public String getCarFrameNo() {
         return carFrameNo;
     }
@@ -162,6 +123,7 @@ public class DriverInfo {
     public void setCarFrameNo(String carFrameNo) {
         this.carFrameNo = carFrameNo;
     }
+
 
     public String getCarLength() {
         return carLength;
@@ -171,6 +133,16 @@ public class DriverInfo {
         this.carLength = carLength;
     }
 
+
+    public String getCarNo() {
+        return carNo;
+    }
+
+    public void setCarNo(String carNo) {
+        this.carNo = carNo;
+    }
+
+
     public String getCarType() {
         return carType;
     }
@@ -179,12 +151,22 @@ public class DriverInfo {
         this.carType = carType;
     }
 
+
     public String getCarWidth() {
         return carWidth;
     }
 
     public void setCarWidth(String carWidth) {
         this.carWidth = carWidth;
+    }
+
+
+    public boolean isCompanyCar() {
+        return companyCar;
+    }
+
+    public void setCompanyCar(boolean companyCar) {
+        this.companyCar = companyCar;
     }
 
     public String getDriveLicence() {
@@ -195,6 +177,16 @@ public class DriverInfo {
         this.driveLicence = driveLicence;
     }
 
+
+    public String getDriverName() {
+        return driverName;
+    }
+
+    public void setDriverName(String driverName) {
+        this.driverName = driverName;
+    }
+
+
     public String getEngineNo() {
         return engineNo;
     }
@@ -202,6 +194,16 @@ public class DriverInfo {
     public void setEngineNo(String engineNo) {
         this.engineNo = engineNo;
     }
+
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
 
     public String getGoodsHeight() {
         return goodsHeight;
@@ -211,6 +213,16 @@ public class DriverInfo {
         this.goodsHeight = goodsHeight;
     }
 
+
+    public String getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
+    }
+
+
     public String getInsuranceCard() {
         return insuranceCard;
     }
@@ -218,6 +230,16 @@ public class DriverInfo {
     public void setInsuranceCard(String insuranceCard) {
         this.insuranceCard = insuranceCard;
     }
+
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
 
     public String getRemark() {
         return remark;
@@ -227,6 +249,7 @@ public class DriverInfo {
         this.remark = remark;
     }
 
+
     public String getRunLicence() {
         return runLicence;
     }
@@ -235,65 +258,12 @@ public class DriverInfo {
         this.runLicence = runLicence;
     }
 
-    public DriverInfo() {
+
+    public String getState() {
+        return state;
     }
 
-    public DriverInfo(String id, String driverName, String idCard, String phone, String gender, Date birthday, String state, String carNo, String address, String companyCar, double allowCarryVolume, double allowCarryWeight, String bizLicence, String carDept, String carDeptTel, String carFrameNo, String carLength, String carType, String carWidth, String driveLicence, String engineNo, String goodsHeight, String insuranceCard, String remark, String runLicence) {
-        this.id = id;
-        this.driverName = driverName;
-        this.idCard = idCard;
-        this.phone = phone;
-        this.gender = gender;
-        this.birthday = birthday;
+    public void setState(String state) {
         this.state = state;
-        this.carNo = carNo;
-        this.address = address;
-        this.companyCar = companyCar;
-        this.allowCarryVolume = allowCarryVolume;
-        this.allowCarryWeight = allowCarryWeight;
-        this.bizLicence = bizLicence;
-        this.carDept = carDept;
-        this.carDeptTel = carDeptTel;
-        this.carFrameNo = carFrameNo;
-        this.carLength = carLength;
-        this.carType = carType;
-        this.carWidth = carWidth;
-        this.driveLicence = driveLicence;
-        this.engineNo = engineNo;
-        this.goodsHeight = goodsHeight;
-        this.insuranceCard = insuranceCard;
-        this.remark = remark;
-        this.runLicence = runLicence;
-    }
-
-    @Override
-    public String toString() {
-        return "DriverInfo{" +
-                "id='" + id + '\'' +
-                ", driverName='" + driverName + '\'' +
-                ", idCard='" + idCard + '\'' +
-                ", phone='" + phone + '\'' +
-                ", gender='" + gender + '\'' +
-                ", birthday=" + birthday +
-                ", state='" + state + '\'' +
-                ", carNo='" + carNo + '\'' +
-                ", address='" + address + '\'' +
-                ", companyCar='" + companyCar + '\'' +
-                ", allowCarryVolume=" + allowCarryVolume +
-                ", allowCarryWeight=" + allowCarryWeight +
-                ", bizLicence='" + bizLicence + '\'' +
-                ", carDept='" + carDept + '\'' +
-                ", carDeptTel='" + carDeptTel + '\'' +
-                ", carFrameNo='" + carFrameNo + '\'' +
-                ", carLength='" + carLength + '\'' +
-                ", carType='" + carType + '\'' +
-                ", carWidth='" + carWidth + '\'' +
-                ", driveLicence='" + driveLicence + '\'' +
-                ", engineNo='" + engineNo + '\'' +
-                ", goodsHeight='" + goodsHeight + '\'' +
-                ", insuranceCard='" + insuranceCard + '\'' +
-                ", remark='" + remark + '\'' +
-                ", runLicence='" + runLicence + '\'' +
-                '}';
     }
 }

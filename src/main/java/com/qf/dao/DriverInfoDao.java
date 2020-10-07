@@ -14,7 +14,10 @@ import java.util.List;
 @Repository
 public interface DriverInfoDao {
 
-    List<String> findAllId();
+    DriverInfo findDriverById(String id);
 
-    List<DriverInfo> findAll();
+    void updateDriverInfo(DriverInfo driverInfo);
+
+    List<DriverInfo> selectAllId(String state);
+
 }

@@ -2,6 +2,7 @@ package com.qf.service;
 
 import com.qf.entity.BillInfo;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -12,5 +13,11 @@ import java.util.List;
  */
 public interface BillService {
 
-    List<BillInfo> selectBill(Integer pageNum, Integer limit);
+    List<BillInfo> findByPage(Integer pageNum, Integer limit);
+
+    List<BillInfo> findAllBill(Integer pageNum, Integer limit);
+
+    void addRelease(String releasePerson, String receiveBillPerson, Date receiveBillTime, String acceptStation, String billCode);
+
+
 }

@@ -1,6 +1,7 @@
 package com.qf.dao;
 
 import com.qf.entity.BillInfo;
+import com.qf.entity.BillRelease;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,5 +15,11 @@ import java.util.List;
 @Repository
 public interface BillDao {
 
-    List<BillInfo> selectBill();
+    List<BillInfo> findByPage();
+
+    List<BillInfo> findAllBill(String billState);
+
+    void addRelease(BillRelease billRelease);
+
+    void updateBillInfo(BillInfo billInfo);
 }
