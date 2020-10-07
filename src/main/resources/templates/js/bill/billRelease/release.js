@@ -46,7 +46,7 @@ layui.use(['layer', 'form', 'element', 'jquery', 'table', 'laydate'], function()
             dataType: 'json',
             async: false,
             success: function (result) {
-                if (result === 'SUCCESS') {
+                if (result.code == 1) {
                     layer.msg('分发成功', {
                         time: 800,
                         icon: 1
