@@ -12,11 +12,9 @@ import java.util.List;
  */
 public interface DriverInfoService {
 
-//    List<String> findAllId();
-
-//    List<DriverInfo> findAll(Integer pageNum,Integer limit);
-
     List<DriverInfo> selectAllId();
 
     void addDriver(DriverInfo driverInfo);
+
+    List<DriverInfo> selectAllByPage(Integer pageNum,Integer limit);
 }

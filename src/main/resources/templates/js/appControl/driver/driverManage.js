@@ -51,7 +51,7 @@ layui.use(['layer', 'form', 'element', 'laydate', 'jquery', 'table'], function()
             table.render({
                 elem: '#driverTable',
                 height: 'full-170',
-                url: nginx_url + '/driverInfo/selectAllByPage', //数据接口
+                url: nginx_url + '/driverInfo/selectAllByPage.do', //数据接口
                 limit: 10,
                 limits: [ 10 ],
                 request: {
@@ -60,7 +60,7 @@ layui.use(['layer', 'form', 'element', 'laydate', 'jquery', 'table'], function()
                 },
                 response: {
                     statusName: 'code', //数据状态的字段名称，默认：code
-                    // statusCode: 200, //成功的状态码，默认：0
+                    statusCode: 200, //成功的状态码，默认：0
                     msgName: 'msg', //状态信息的字段名称，默认：msg
                     countName: 'count', //数据总数的字段名称，默认：count
                     dataName: 'data' //数据列表的字段名称，默认：data
@@ -110,7 +110,7 @@ layui.use(['layer', 'form', 'element', 'laydate', 'jquery', 'table'], function()
                             }
                         });
                         table.reload('driverTable', {
-                            url: nginx_url + '/driverInfo/selectAllByPage'
+                            url: nginx_url + '/driverInfo/selectAllByPage.do'
                         });
                     });
 
@@ -124,7 +124,7 @@ layui.use(['layer', 'form', 'element', 'laydate', 'jquery', 'table'], function()
                         move: false,
                         end: function() {
                             table.reload('driverTable', {
-                                url: nginx_url + '/driverInfo/selectAllByPage'
+                                url: nginx_url + '/driverInfo/selectAllByPage.do'
                             })
                         }
                     });

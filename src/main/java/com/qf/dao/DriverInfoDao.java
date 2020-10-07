@@ -22,4 +22,6 @@ public interface DriverInfoDao {
 
     void addDriver(DriverInfo driverInfo);
 
+    List<DriverInfo> selectAllByPage();
+
 }

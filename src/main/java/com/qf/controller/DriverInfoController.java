@@ -1,8 +1,10 @@
 package com.qf.controller;
 
+import com.github.pagehelper.Page;
 import com.qf.entity.DriverInfo;
 import com.qf.service.DriverInfoService;
 import com.qf.util.JsonResult;
+import com.qf.util.TableResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,6 +43,19 @@ public class DriverInfoController {
     public JsonResult addDriver(DriverInfo driverInfo){
         driverInfoService.addDriver(driverInfo);
         return new JsonResult(1,"添加成功");
+    }
+
+    /**
+     * 司机列表分页展示
+     * @param pageNum
+     * @param limit
+     * @return
+     */
+    @RequestMapping("/selectAllByPage.do")
+    public TableResult selectAllByPage(Integer pageNum,Integer limit){
+        List<DriverInfo> list = driverInfoService.selectAllByPage(pageNum, limit);
+        long total = ((Page) list).getTotal();
+        return new TableResult(200,"success",total,list);
     }
 
 }

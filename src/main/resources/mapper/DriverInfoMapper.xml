@@ -3,6 +3,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--namespace 命名空间 是唯一的，必须是Dao接口的全限定名-->
 <mapper namespace="com.qf.dao.DriverInfoDao">
+    <resultMap id="selectAllByPage" type="DriverInfo">
+        <id column="id" property="id"></id>
+        <result column="driver_name" property="driverName"></result>
+        <result column="phone" property="phone"></result>
+        <result column="state" property="state"></result>
+        <result column="car_no" property="carNo"></result>
+        <result column="car_type" property="carType"></result>
+    </resultMap>
     <select id="selectAllId" resultType="com.qf.entity.DriverInfo" parameterType="string">
         select id from driverinfo where state = #{state}
     </select>
@@ -22,4 +30,7 @@
             insurance_card,phone, remark, run_licence, state
         ) values(#{id}, #{address}, #{allowCarryVolume},#{allowCarryWeight},#{birthday}, #{bizLicence},#{carDept}, #{carDeptTel}, #{carFrameNo},#{carLength}, #{carNo}, #{carType}, #{carWidth},#{companyCar}, #{driveLicence},#{driverName},#{engineNo},#{gender},#{goodsHeight},#{idCard},#{insuranceCard},#{phone},#{remark},#{runLicence},#{state})
     </insert>
+    <select id="selectAllByPage" parameterType="int" resultMap="selectAllByPage">
+        select * from driverinfo
+    </select>
 </mapper>

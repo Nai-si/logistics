@@ -1,5 +1,6 @@
 package com.qf.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.qf.dao.DriverInfoDao;
 import com.qf.entity.DriverInfo;
 import com.qf.service.DriverInfoService;
@@ -45,6 +46,12 @@ public class DriverInfoServiceImpl implements DriverInfoService {
     public void addDriver(DriverInfo driverInfo) {
         driverInfo.setId(getDriverId());
         driverInfoDao.addDriver(driverInfo);
+    }
+
+    @Override
+    public List<DriverInfo> selectAllByPage(Integer pageNum, Integer limit) {
+        PageHelper.startPage(pageNum,limit);
+        return driverInfoDao.selectAllByPage();
     }
 
 }
