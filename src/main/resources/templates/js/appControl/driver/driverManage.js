@@ -51,7 +51,7 @@ layui.use(['layer', 'form', 'element', 'laydate', 'jquery', 'table'], function()
             table.render({
                 elem: '#driverTable',
                 height: 'full-170',
-                url: nginx_url + '/driverInfo/selectAllByPage', //数据接口
+                url: nginx_url + '/driverInfo/selectAllByPage.do', //数据接口
                 limit: 10,
                 limits: [ 10 ],
                 request: {
@@ -110,7 +110,7 @@ layui.use(['layer', 'form', 'element', 'laydate', 'jquery', 'table'], function()
                             }
                         });
                         table.reload('driverTable', {
-                            url: nginx_url + '/driverInfo/selectAllByPage'
+                            url: nginx_url + '/driverInfo/selectAllByPage.do'
                         });
                     });
 
@@ -124,7 +124,7 @@ layui.use(['layer', 'form', 'element', 'laydate', 'jquery', 'table'], function()
                         move: false,
                         end: function() {
                             table.reload('driverTable', {
-                                url: nginx_url + '/driverInfo/selectAllByPage'
+                                url: nginx_url + '/driverInfo/selectAllByPage.do'
                             })
                         }
                     });

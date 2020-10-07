@@ -1,5 +1,6 @@
 package com.qf.dao;
 
+import com.qf.entity.DriverInfo;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,4 +15,6 @@ import java.util.List;
 public interface DriverInfoDao {
 
     List<String> findAllId();
+
+    List<DriverInfo> findAll();
 }

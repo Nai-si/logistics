@@ -6,4 +6,17 @@
     <select id="findAllId" parameterType="String" resultType="String">
       select id from driverinfo
     </select>
+
+
+    <resultMap id="findAll" type="DriverInfo">
+        <id column="id" property="id"></id>
+        <result column="driver_name" property="driverName"></result>
+        <result column="phone" property="phone"></result>
+        <result column="state" property="state"></result>
+        <result column="car_no" property="carNo"></result>
+        <result column="car_type" property="carType"></result>
+    </resultMap>
+    <select id="findAll" parameterType="int" resultMap="findAll">
+        select * from driverinfo
+    </select>
 </mapper>

@@ -1,5 +1,7 @@
 package com.qf.service;
 
+import com.qf.entity.DriverInfo;
+
 import java.util.List;
 
 /**
@@ -11,5 +13,7 @@ import java.util.List;
 public interface DriverInfoService {
 
     List<String> findAllId();
+
+    List<DriverInfo> findAll(Integer pageNum,Integer limit);
 
 }
